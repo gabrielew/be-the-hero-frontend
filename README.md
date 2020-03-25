@@ -14,7 +14,7 @@
  
   
  ## Feito Com
-  Abaixo segue o que foi utilizado na criação deste backend:
+  Abaixo segue o que foi utilizado na criação deste frontend:
   - [REACTJS](https://pt-br.reactjs.org/)
   - [AXIOS](https://github.com/axios/axios)
   
