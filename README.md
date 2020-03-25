@@ -17,6 +17,8 @@
   Abaixo segue o que foi utilizado na criação deste frontend:
   - [REACTJS](https://pt-br.reactjs.org/)
   - [AXIOS](https://github.com/axios/axios)
+  - [REACT-ROUTER-DOM](https://reacttraining.com/react-router/web/guides/quick-start)
+  - [REACT-ICONS/FI](https://feathericons.com/)
   
  ## Começando
   Para começar a utilizar este projeto basta clonar o repositório e executar npm install ou yarn
