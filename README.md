@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://rocketseat.com.br/week/inscricao/11.0">
+  <a href="https://rocketseat.com.br/week/inscricao/11.0" target="blank">
     <img src="https://redeinovadrogarias.s3-sa-east-1.amazonaws.com/Assinaturas/be-the-hero.svg" alt="Logo">
   </a>
 
