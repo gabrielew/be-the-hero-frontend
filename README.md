@@ -10,7 +10,7 @@
 
 
 ## Sobre o Projeto
-  Este projeto visa desenvolver um backend em nodejs para o projeto BE THE HERO, onde será possível cadastrar ONGS e também seus casos para solicitar ajuda.
+  Este projeto visa desenvolver um frontend em REACTJS para o projeto BE THE HERO, onde será possível cadastrar ONGS e também seus casos para solicitar ajuda.
  
   
  ## Feito Com
