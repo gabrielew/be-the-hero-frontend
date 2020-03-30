@@ -22,3 +22,12 @@
   font-size: 32px;
   margin-bottom: 32px;
 }
+
+.logon-container section.form form input {
+  margin-bottom: 10px;
+}
+
+.toastify {
+  border-radius: 8px;
+  font-weight: bold;
+}
