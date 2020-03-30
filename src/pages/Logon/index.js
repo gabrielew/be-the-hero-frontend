@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { FiLogIn } from "react-icons/fi";
 import api from "../../services/api";
 import "./styles.css";
@@ -8,18 +9,26 @@ import heroes from "../../assets/heroes.png";
 import logo from "../../assets/logo.svg";
 
 export default function Logon() {
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const history = useHistory();
   const handleLogin = async event => {
     event.preventDefault();
     try {
-      const response = await api.post("sessions", { id });
-      localStorage.setItem("ongId", id);
+      console.log(email, password);
+      const response = await api.post("sessions", { email, password });
       localStorage.setItem("ongName", response.data.name);
+      localStorage.setItem("ongToken", response.data.token);
+
+      toast.success(`${response.data.name}, bem-vindo`, {
+        className: "toastify"
+      });
 
       history.push("/profile");
     } catch (err) {
-      alert("Falha no Login, tente novamente.");
+      toast.error(`Erro, tente novamente`, {
+        className: "toastify"
+      });
     }
   };
   return (
@@ -31,9 +40,15 @@ export default function Logon() {
           <h1>Faça seu Logon</h1>
 
           <input
-            placeholder="Sua ID"
-            value={id}
-            onChange={e => setId(e.target.value)}
+            placeholder="E-mail da ONG"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <input
+            placeholder="Senha"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
           <button className="button" type="submit">
             Entrar
