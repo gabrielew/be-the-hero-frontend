@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const ongId = localStorage.getItem("ongName");
-
 const api = axios.create({
-  baseURL: "http://localhost:3333"
+  baseURL: "http://localhost:3334"
 });
 
 export default api;
