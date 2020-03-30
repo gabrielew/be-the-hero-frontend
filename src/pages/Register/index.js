@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { FiArrowLeft } from "react-icons/fi";
 import api from "../../services/api";
 import "./styles.css";
@@ -8,6 +9,7 @@ import logo from "../../assets/logo.svg";
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [city, setCity] = useState("");
   const [uf, setUf] = useState("");
@@ -18,17 +20,22 @@ export default function Register() {
     const data = {
       name,
       email,
+      password,
       whatsapp,
       city,
       uf
     };
 
     try {
-      const response = await api.post("ongs", data);
-      alert(response.data.id);
+      await api.post("ongs", data);
+      toast.success(`Cadastro feito com sucesso.`, {
+        className: "toastify"
+      });
       history.push("/");
     } catch (err) {
-      alert("Erro, tente novamente");
+      toast.error(`Erro, tente novamente`, {
+        className: "toastify"
+      });
     }
   };
   return (
@@ -57,6 +64,12 @@ export default function Register() {
             placeholder="E-mail"
             value={email}
             onChange={e => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
           <input
             placeholder="Whatsapp"

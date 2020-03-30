@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 import "./styles.css";
 
@@ -12,7 +13,7 @@ export default function NewIncident() {
   const [value, setValue] = useState("");
 
   const history = useHistory();
-  const ongId = localStorage.getItem("ongId");
+  const ongToken = localStorage.getItem("ongToken");
 
   const handleNewIncident = async event => {
     event.preventDefault();
@@ -25,9 +26,10 @@ export default function NewIncident() {
     try {
       await api.post("incidents", data, {
         headers: {
-          authorization: ongId
+          authorization: `Bearer ${ongToken}`
         }
       });
+      toast.info(`Caso criado com sucesso`, { className: "toastify" });
       history.push("/profile");
     } catch (err) {
       alert("Erro, tente novamente.");

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { FiPower, FiTrash2 } from "react-icons/fi";
 import api from "../../services/api";
 
@@ -9,20 +10,24 @@ import "./styles.css";
 export default function Profile() {
   const [incidents, setIncidents] = useState([]);
   const history = useHistory();
-  const ongId = localStorage.getItem("ongId");
   const ongName = localStorage.getItem("ongName");
+  const ongToken = localStorage.getItem("ongToken");
 
   const handleDelete = async id => {
     try {
       await api.delete(`incidents/${id}`, {
         headers: {
-          authorization: ongId
+          authorization: `Bearer ${ongToken}`
         }
       });
       setIncidents(incidents.filter(incidents => incidents.id !== id));
-      alert("Caso deletado com sucesso.");
+      toast.warning(`Caso deletado com sucesso.`, {
+        className: "toastify"
+      });
     } catch (err) {
-      alert("Erro, tente novamente");
+      toast.error(`Erro, tente novamente`, {
+        className: "toastify"
+      });
     }
   };
 
@@ -30,13 +35,13 @@ export default function Profile() {
     api
       .get("profile", {
         headers: {
-          authorization: ongId
+          authorization: `Bearer ${ongToken}`
         }
       })
       .then(response => {
         setIncidents(response.data);
       });
-  }, [ongId]);
+  }, [ongToken]);
 
   const handleLogout = () => {
     localStorage.clear();
